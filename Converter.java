@@ -2,7 +2,11 @@ public class Converter {
     double step = 0.75;
     byte calories = 50;
 
-    StepTracker stepTracker = new StepTracker();
+    StepTracker stepTracker;
+
+    public Converter(StepTracker stepTracker) {
+        this.stepTracker = stepTracker;
+    }
 
 
     public double converterSteps(String monthName) {

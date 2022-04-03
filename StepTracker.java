@@ -67,36 +67,44 @@ public class StepTracker {
         MonthData monthData = monthToData.get(getMonthIndex(monthName));
         double count = 0;
 
-        for (Integer i : monthData.stepData.values()) {
-            count += i;
-        }
-        return count;
-    }
+        if (monthData == null) return 0;
+        else {
 
+            for (Integer i : monthData.stepData.values()) {
+                count += i;
+            }
+            return count;
+        }
+    }
 
     public double averageSteps(String monthName) {
 
         MonthData monthData = monthToData.get(getMonthIndex(monthName));
-
-        double averageStep = 0;
-        byte count = 0;
-        for (Integer i : monthData.stepData.values()) {
-            averageStep += i;
-            count++;
+        if (monthData == null) return 0;
+        else {
+            double averageStep = 0;
+            byte count = 0;
+            for (Integer i : monthData.stepData.values()) {
+                averageStep += i;
+                count++;
+            }
+            return averageStep / count;
         }
-        return averageStep / count;
     }
 
     public int maxMonthStep(String monthName) {
         MonthData monthData = monthToData.get(getMonthIndex(monthName));
-        int max = monthData.stepData.get(1);
 
-        for (Integer i : monthData.stepData.values()) {
-            if (i > max) max = i;
+        if (monthData == null) return 0;
+        else {
+            int max = monthData.stepData.get(1);
+
+            for (Integer i : monthData.stepData.values()) {
+                if (i > max) max = i;
+            }
+            return max;
         }
-        return max;
     }
-
 }
 
 

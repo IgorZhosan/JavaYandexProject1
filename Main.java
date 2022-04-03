@@ -1,11 +1,11 @@
-import java.util.Locale;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         StepTracker stepTracker = new StepTracker();
-        Converter converter = new Converter();
+        Converter converter = new Converter(stepTracker);
         printMenu();
 
         while (true) {
