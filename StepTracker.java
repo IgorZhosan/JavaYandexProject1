@@ -113,15 +113,17 @@ public class StepTracker {
         MonthData monthData = monthToData.get(getMonthIndex(monthName));
         byte localMax = 0;
         byte globalMax = 0;
-        for (int i = 1; i <= monthData.stepData.size(); i++) { // доработать.....
-            if (monthData.stepData.get(i) > stepMonth && monthData.stepData.get(i + 1) > stepMonth) {
-                localMax++;
-            } else {
-                globalMax = localMax;
-                localMax = 0;
-            }
+       for (Integer i: monthData.stepData.values()) {
+           if (i >= stepMonth) {
+               localMax++;
+           }
+           else
+           {
+               localMax = 0;
+           }
 
-        }
+           if (globalMax < localMax) globalMax = localMax;
+       }
         return globalMax;
     }
 
