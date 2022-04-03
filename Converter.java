@@ -8,7 +8,6 @@ public class Converter {
         this.stepTracker = stepTracker;
     }
 
-
     public double converterSteps(String monthName) {
 
         return step * stepTracker.countStep(monthName) / 1000;

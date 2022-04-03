@@ -100,6 +100,31 @@ public class StepTracker {
             return max;
         }
     }
+
+    public void setStepMonth(double stepMonth) {
+        this.stepMonth = stepMonth;
+    }
+
+    public double getStepMonth() {
+        return stepMonth;
+    }
+
+    public int bestSeries(String monthName) {
+        MonthData monthData = monthToData.get(getMonthIndex(monthName));
+        byte localMax = 0;
+        byte globalMax = 0;
+        for (int i = 1; i <= monthData.stepData.get(i- 1) ; i++) { // доработать.....
+            if (monthData.stepData.get(i) > stepMonth && monthData.stepData.get(i + 1) > stepMonth) {
+                localMax++;
+            } else {
+                globalMax = localMax;
+                localMax = 0;
+            }
+
+        }
+        return globalMax;
+    }
+
 }
 
 
