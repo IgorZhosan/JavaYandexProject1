@@ -7,38 +7,44 @@ public class StepTracker {
     HashMap<Integer, MonthData> monthToData = new HashMap<Integer, MonthData>();
 
     int getMonthIndex(String month) {
-        switch (month) {
-            case "Январь":
-                return 0;
-            case "Февраль":
-                return 1;
-            case "Март":
-                return 2;
-            case "Апрель":
-                return 3;
-            case "Май":
-                return 4;
-            case "Июнь":
-                return 5;
-            case "Июль":
-                return 6;
-            case "Август":
-                return 7;
-            case "Сентябрь":
-                return 8;
-            case "Октябрь":
-                return 9;
-            case "Ноябрь":
-                return 10;
-            case "Декабрь":
-                return 11;
-            default:
-                return -1;
+
+        if (month.length() > 2) {
+            switch (month) {
+                case "Январь":
+                    return 0;
+                case "Февраль":
+                    return 1;
+                case "Март":
+                    return 2;
+                case "Апрель":
+                    return 3;
+                case "Май":
+                    return 4;
+                case "Июнь":
+                    return 5;
+                case "Июль":
+                    return 6;
+                case "Август":
+                    return 7;
+                case "Сентябрь":
+                    return 8;
+                case "Октябрь":
+                    return 9;
+                case "Ноябрь":
+                    return 10;
+                case "Декабрь":
+                    return 11;
+                default:
+                    System.out.println("Error");
+                    return -1;
+            }
+        } else {
+            return Integer.parseInt(month);
         }
     }
 
     public StepTracker() {
-        for (int i = 0; i < 12; i++) {
+        for (int i = 1; i <= 12; i++) {
             monthToData.put(i, new MonthData());
         }
     }
@@ -113,17 +119,15 @@ public class StepTracker {
         MonthData monthData = monthToData.get(getMonthIndex(monthName));
         byte localMax = 0;
         byte globalMax = 0;
-       for (Integer i: monthData.stepData.values()) {
-           if (i >= stepMonth) {
-               localMax++;
-           }
-           else
-           {
-               localMax = 0;
-           }
+        for (Integer i : monthData.stepData.values()) {
+            if (i >= stepMonth) {
+                localMax++;
+            } else {
+                localMax = 0;
+            }
 
-           if (globalMax < localMax) globalMax = localMax;
-       }
+            if (globalMax < localMax) globalMax = localMax;
+        }
         return globalMax;
     }
 

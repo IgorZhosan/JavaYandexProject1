@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class MenuDrawer {
 
-    void Start() {
+    void start() {
         Scanner scanner = new Scanner(System.in);
         StepTracker stepTracker = new StepTracker();
         Converter converter = new Converter(stepTracker);

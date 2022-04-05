@@ -11,6 +11,7 @@ public class Converter {
     public double converterSteps(String monthName) {
 
         return step * stepTracker.countStep(monthName) / 1000;
+
     }
 
     public double converterCalories(String monthName) {
